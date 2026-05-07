@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Obat | Admin Apotek Shabah</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body class="dashboard-page">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">Apotek <span>Shabah</span></div>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="dashboard.html"><i class="fas fa-home"></i> Beranda</a>
+        </li>
+        <li class="active">
+          <a href="#"><i class="fas fa-pills"></i> Kelola Obat</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-shopping-cart"></i> Transaksi</a>
+        </li>
+        <li class="logout">
+          <a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content-admin">
+      <header class="admin-header">
+        <h2>Manajemen Inventaris Obat</h2>
+        <button class="btn-add" onclick="openModal('modalObat')"><i class="fas fa-plus"></i> Tambah Obat</button>
+      </header>
+
+      <div class="admin-toolbar">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" onkeyup="searchObat()" placeholder="Cari nama obat..." />
+        </div>
+        <div class="filter-box">
+          <select id="filterKategori" onchange="filterObat()">
+            <option value="Semua">Semua Kategori</option>
+            <option value="Obat Bebas">Obat Bebas</option>
+            <option value="Obat Keras">Obat Keras</option>
+            <option value="Vitamin">Vitamin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="admin-table" id="tabelObat">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Obat</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Stok</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OBT001</td>
+              <td><strong>Paramex</strong></td>
+              <td>Obat Bebas</td>
+              <td>Rp 5.000</td>
+              <td>150</td>
+              <td><span class="status-ready">Tersedia</span></td>
+              <td>
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>OBT002</td>
+              <td><strong>Amoxicillin</strong></td>
+              <td>Obat Keras</td>
+              <td>Rp 25.000</td>
+              <td>8</td>
+              <td><span class="status-low">Stok Tipis</span></td>
+              <td>
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <div id="modalObat" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalObat')">&times;</span>
+        <h3>Formulir Data Obat</h3>
+        <hr />
+        <form id="formObat">
+          <div class="form-group">
+            <label>Nama Obat</label>
+            <input type="text" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Kategori</label>
+              <select>
+                <option>Obat Bebas</option>
+                <option>Obat Keras</option>
+                <option>Vitamin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Stok</label>
+              <input type="number" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Harga (Rp)</label>
+            <input type="number" required />
+          </div>
+          <button type="submit" class="btn-submit">Simpan Data</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
