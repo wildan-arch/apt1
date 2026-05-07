@@ -63,3 +63,47 @@ function reveal() {
     }
   }
 }
+
+// logika fitur pencarian obat di index.html
+var obat = [
+  { id: 1, name: "Paracetamol", stok: 120, harga: "Rp 5.000" },
+  { id: 2, name: "Aspirin", stok: 50, harga: "Rp 10.000" },
+  { id: 3, name: "Ibuprofen", stok: 30, harga: "Rp 15.000" },
+];
+
+function cariObat() {
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+  const container = document.getElementById("hasilPencarian");
+
+  // Jika input kosong, bersihkan hasil dan berhenti
+  if (keyword === "") {
+    container.innerHTML = "";
+    return;
+  }
+
+  // 1. Filter data berdasarkan nama
+  const hasil = obat.filter((item) => item.name.toLowerCase().includes(keyword));
+
+  // 2. Map data ke dalam HTML
+  const htmlHasil = hasil
+    .map(
+      (item) => `
+        <div class="search-item">
+            <div class="info">
+                <strong>${item.name}</strong>
+                <span>Stok: ${item.stok} | ${item.harga}</span>
+            </div>
+            <button class="btn-pilih" onclick="pilihObat('${item.name}')">Pilih</button>
+        </div>
+    `,
+    )
+    .join("");
+
+  // 3. Tampilkan ke container
+  container.innerHTML = htmlHasil;
+}
+
+function pilihObat(nama) {
+  alert("Anda memilih: " + nama);
+  document.getElementById("hasilPencarian").innerHTML = "";
+}

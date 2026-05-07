@@ -1,0 +1,14 @@
+var obat = [
+    {
+        "id": 1,
+        "name": "Paracetamol"
+    },
+    {
+        "id": 2,
+        "name": "Aspirin"
+    },
+    {
+        "id": 3,
+        "name": "Ibuprofen"
+    }
+];

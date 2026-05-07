@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- // Di dalam tag <script> dashboard.html -->
-    <script>
-      if (document.referrer.indexOf("login.html") === -1) {
-        // Jika orang masuk tanpa lewat login.html, tendang balik ke login
-        // window.location.href = "login.html";
-      }
-    </script>
   </head>
   <body class="dashboard-page">
     <aside class="sidebar">
@@ -143,6 +137,12 @@
       function toggleForm() {
         const form = document.getElementById("addForm");
         form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+    </script>
+    <script>
+      if (document.referrer.indexOf("login.html") === -1) {
+        // Jika orang masuk tanpa lewat login.html, tendang balik ke login
+        window.location.href = "login.html";
       }
     </script>
   </body>

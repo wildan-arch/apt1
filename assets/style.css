@@ -93,6 +93,76 @@ body {
 .btn-primary:hover {
   background: #219150;
 }
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-input {
+  max-width: 190px;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 1.5px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px #000;
+  outline: none;
+  transition: ease 0.25s;
+  margin: 10px 0;
+}
+
+.search-input:focus {
+  box-shadow: 5.5px 7px 0 black;
+}
+.search-bar {
+  position: relative; /* Penting agar hasil menempel di bawahnya */
+}
+
+.search-results-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-item {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item .info strong {
+  display: block;
+  color: #2c3e50;
+}
+
+.search-item .info span {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.btn-pilih {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
 
 /* Styling Section Produk */
 .products {
