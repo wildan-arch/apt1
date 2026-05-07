@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin | Apotek Shabah</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body class="dashboard-page">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">Apotek <span>Shabah</span></div>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active">
+          <a href="#"><i class="fas fa-home"></i> Beranda</a>
+        </li>
+        <li>
+          <a href="#" id="menu-produk"><i class="fas fa-pills"></i> Kelola Produk</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-envelope"></i> Pesan Masuk</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+        </li>
+        <li class="logout">
+          <a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content-admin">
+      <header class="admin-header">
+        <h2>Selamat Datang, <span>Admin Shabah</span></h2>
+        <div class="user-profile">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-box"></i>
+          <div>
+            <h3>120</h3>
+            <p>Total Produk</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-comments"></i>
+          <div>
+            <h3>15</h3>
+            <p>Pesan Baru</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-eye"></i>
+          <div>
+            <h3>1,200</h3>
+            <p>Pengunjung</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="management-section">
+        <div class="section-header">
+          <h3>Daftar Produk Obat</h3>
+          <button class="btn-add" onclick="toggleForm()"><i class="fas fa-plus"></i> Tambah Produk</button>
+        </div>
+
+        <div id="addForm" class="form-container-admin" style="display: none">
+          <form>
+            <input type="text" placeholder="Nama Obat" />
+            <input type="text" placeholder="Harga (Contoh: Rp 10.000)" />
+            <select>
+              <option>Obat Bebas</option>
+              <option>Vitamin</option>
+              <option>Alat Kesehatan</option>
+            </select>
+            <button type="button" class="btn-primary">Simpan Produk</button>
+          </form>
+        </div>
+
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Gambar</th>
+              <th>Nama Obat</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://via.placeholder.com/50" alt="obat" /></td>
+              <td>Paracetamol 500mg</td>
+              <td>Obat Bebas</td>
+              <td>Rp 12.500</td>
+              <td>
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      function toggleForm() {
+        const form = document.getElementById("addForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master</title>
+  </head>
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+    }
+    .wrapper {
+      width: 500px;
+    }
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+    .active,
+    .accordion:hover {
+      background-color: #ccc;
+    }
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+    .panel a {
+      display: block;
+      text-decoration: none;
+      color: #444;
+      padding: 1rem;
+      &:hover {
+        background-color: #887b7b;
+        color: #ccc;
+      }
+    }
+    .accordion::after {
+      content: "\00002B";
+      font-size: 13px;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+    }
+    .active::after {
+      content: "\00002D";
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <button class="accordion">Master</button>
+      <div class="panel">
+        <a href="#obat">Obat</a>
+        <a href="#supplier">Supplier</a>
+        <a href="#pelanggan">Pelanggan</a>
+      </div>
+      <button class="accordion">Master</button>
+      <div class="panel">
+        <a href="#obat">Obat</a>
+        <a href="#supplier">Supplier</a>
+        <a href="#pelanggan">Pelanggan</a>
+      </div>
+      <button class="accordion">Master</button>
+      <div class="panel">
+        <a href="#obat">Obat</a>
+        <a href="#supplier">Supplier</a>
+        <a href="#pelanggan">Pelanggan</a>
+      </div>
+    </div>
+    <script>
+      const acc = document.querySelectorAll(".accordion");
+
+      acc.forEach((button) => {
+        button.addEventListener("click", function () {
+          // 1. Toggle class active untuk warna tombol
+          this.classList.toggle("active");
+
+          // 2. Ambil panel (elemen setelah tombol)
+          const panel = this.nextElementSibling;
+
+          // 3. Logika animasi tinggi
+          if (panel.style.maxHeight) {
+            // Jika sudah terbuka, maka tutup
+            panel.style.maxHeight = null;
+          } else {
+            // Jika tertutup, set tinggi sesuai isi kontennya
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

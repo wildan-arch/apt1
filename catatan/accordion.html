@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+  </head>
+  <style>
+    body {
+      display: grid;
+      place-items: center; /* Langsung mengetengahkan horizontal & vertikal */
+      min-height: 100vh;
+    }
+    .wrapper {
+      width: 500px;
+    }
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active,
+    .accordion:hover {
+      background-color: #ccc;
+    }
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+    .accordion::after {
+      content: "\00002B";
+      font-size: 13px;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+    }
+    .active::after {
+      content: "\00002D";
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <button class="accordion">Section 1</button>
+      <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi veritatis quia, aperiam praesentium dolor incidunt odio sit error deleniti?</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, laboriosam praesentium blanditiis alias aliquid at similique quaerat ducimus qui, beatae itaque corporis doloribus accusamus veniam? Quibusdam, eos eum? Sit
+          deleniti dolores quibusdam dolorem rem iure ipsa mollitia! Saepe debitis tempore nisi, quae hic totam sunt delectus voluptas distinctio. Ipsam consequatur exercitationem odit labore aliquid non, voluptate repudiandae ad tenetur
+          commodi ullam saepe quibusdam itaque est fugit perferendis id rem nihil maiores unde aliquam. Atque laborum magni eius fugiat veniam blanditiis optio quasi harum consequatur labore, et qui modi impedit. Debitis numquam fugit
+          doloribus sit neque eveniet quis fugiat ullam eaque!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellat consequuntur exercitationem laboriosam sapiente! Veritatis ea, doloremque illum, atque eius a nemo amet commodi consectetur laudantium dolores sed illo quia.
+          Eligendi facilis magnam nemo voluptatem illum, incidunt optio temporibus voluptas in, nostrum est impedit qui iusto, molestiae dicta inventore possimus omnis. Adipisci eaque eos unde eveniet, accusamus voluptates qui consequatur
+          cupiditate odit repellat esse quam aliquam voluptatem quidem quae labore! Exercitationem magni nulla distinctio sed vitae sequi velit molestiae dolorem aut, quis veniam magnam nostrum labore! Nemo earum animi adipisci eveniet
+          porro corporis incidunt beatae dolorum id error velit asperiores accusamus possimus quisquam quae rem delectus minus iusto magni, soluta aliquam. Nesciunt sit maxime incidunt perferendis? Maiores eligendi delectus facere!
+          Perspiciatis facere veritatis id, omnis esse voluptatibus commodi voluptas vero nostrum eum, repellat quasi quod adipisci, aliquam debitis non iste suscipit fugit sapiente ducimus quas? Sapiente natus vel ipsam enim illo fuga,
+          saepe aperiam dicta temporibus numquam. Vel eaque nisi dicta beatae sint velit ab rerum commodi eligendi, repellendus necessitatibus non quam praesentium maiores, ullam explicabo minus in consectetur mollitia. Doloribus ipsam ea
+          consectetur quaerat, sequi iusto rem tempore quisquam necessitatibus repudiandae voluptas, similique aliquid quas numquam amet fuga nihil unde dolores. Inventore qui, sapiente temporibus ab, obcaecati dolor ea impedit corporis
+          quae soluta vero quisquam omnis similique repudiandae aliquid sint incidunt officia tempora porro sunt placeat nostrum corrupti, provident esse. Officia aut expedita sunt eum quis praesentium, minima molestias ratione nesciunt rem
+          quae laudantium cum vitae illum excepturi quisquam quibusdam amet! Aliquid voluptates quidem beatae distinctio sequi, a ipsa quibusdam nemo molestiae? Excepturi repudiandae maiores temporibus veritatis illum cumque, aliquid maxime
+          placeat laboriosam deleniti soluta dolor voluptas consectetur quam alias eius architecto dolores quod ex nemo quae vitae. Recusandae nisi velit id hic itaque vero sit consequuntur vitae nulla corrupti accusamus possimus ea
+          necessitatibus quaerat, provident ad ut, facere quasi fuga, officia fugiat officiis libero? Molestiae deleniti, dignissimos accusantium voluptatem ab voluptates sapiente porro quasi recusandae unde veniam aliquam amet neque
+          adipisci dicta ipsa nam tempore tenetur maxime, rem aspernatur numquam, molestias reprehenderit? Aliquam impedit hic neque quasi ex magnam enim, quae nemo expedita laboriosam voluptas, illum ab ratione. Perferendis blanditiis nisi
+          eligendi expedita unde vitae minus, facilis cumque! Officiis aspernatur obcaecati ipsum eum odit, voluptatibus totam temporibus ipsa nostrum voluptate eaque vitae repellat pariatur sequi, ex quaerat. Modi et suscipit facilis
+          maiores eum autem at delectus alias quo.
+        </p>
+      </div>
+      <button class="accordion">Section 2</button>
+      <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi veritatis quia, aperiam praesentium dolor incidunt odio sit error deleniti?</p>
+      </div>
+      <button class="accordion">Section 3</button>
+      <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi veritatis quia, aperiam praesentium dolor incidunt odio sit error deleniti?</p>
+      </div>
+    </div>
+    <script>
+      const acc = document.querySelectorAll(".accordion");
+
+      acc.forEach((button) => {
+        button.addEventListener("click", function () {
+          // 1. Toggle class active untuk warna tombol
+          this.classList.toggle("active");
+
+          // 2. Ambil panel (elemen setelah tombol)
+          const panel = this.nextElementSibling;
+
+          // 3. Logika animasi tinggi
+          if (panel.style.maxHeight) {
+            // Jika sudah terbuka, maka tutup
+            panel.style.maxHeight = null;
+          } else {
+            // Jika tertutup, set tinggi sesuai isi kontennya
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

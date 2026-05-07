@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin | Apotek Shabah</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-header">
+          <div class="logo">Apotek <span>Shabah</span></div>
+          <p>Silakan masuk ke Dashboard Admin</p>
+        </div>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <label><i class="fas fa-user"></i> Username</label>
+            <input type="text" id="username" placeholder="Masukkan username" required />
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-lock"></i> Password</label>
+            <input type="password" id="password" placeholder="Masukkan password" required />
+          </div>
+          <button type="submit" class="btn-submit">Masuk Sekarang</button>
+        </form>
+
+        <div class="login-footer">
+          <a href="index.html"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/login.js"></script>
+  </body>
+</html>
