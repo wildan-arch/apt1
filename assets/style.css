@@ -720,6 +720,12 @@ footer {
 }
 
 /* Modal Styling */
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: #ff0000;
+}
 .modal {
   display: none;
   position: fixed;
@@ -747,23 +753,34 @@ footer {
   cursor: pointer;
   color: #aaa;
 }
-
-.admin-form .form-group {
-  margin-bottom: 15px;
+.form-obat {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
   display: flex;
   flex-direction: column;
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.admin-form label {
+.form-obat label {
   font-size: 0.9rem;
   margin-bottom: 5px;
   font-weight: 600;
+}
+.form-obat input,
+select:not(#filterKategori) {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  outline: 1px solid darkorange;
 }
 
 /* dashboard bagian kelola obat */

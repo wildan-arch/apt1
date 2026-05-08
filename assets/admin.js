@@ -13,10 +13,10 @@ window.onclick = function (event) {
   }
 };
 
-function confirmDelete() {
-  if (confirm("Apakah Anda yakin ingin menghapus produk ini? Data yang dihapus tidak bisa dikembalikan.")) {
+function confirmDelete(name) {
+  if (confirm(`Apakah Anda yakin ingin menghapus ${name.toUpperCase()}? Data yang dihapus tidak bisa dikembalikan.`)) {
     // Logika hapus di sini
-    alert("Produk berhasil dihapus.");
+    alert(`${name.toUpperCase()} berhasil dihapus.`);
   }
 }
 
@@ -33,6 +33,7 @@ async function loadData() {
     // Panggil fungsi-fungsi pengolah data di sini
     updateDashboard();
     tampilkanTabel(obatGlobal);
+    sortAZ(obatGlobal);
 
     console.log("Data berhasil dimuat dan diproses.");
   } catch (error) {
@@ -55,15 +56,23 @@ function tampilkanTabel(data) {
 
   tbody.innerHTML = data
     .map(
-      (obat) => `
+      (obat, index) => `
     <tr>
-      <td>${obat.id}</td>
+      <td>${index + 1}</td>
       <td><strong>${obat.name}</strong></td>
-     
+      <td><strong>${obat.kategori}</strong></td>
+      <td><strong>${obat.indikasi}</strong></td>
       <td>${obat.stok}</td>
       <td>Rp ${obat.harga.toLocaleString("id-ID")}</td>
-      
-    </tr>
+    <td>
+    <button class="btn-edit" onclick="openModal('modalEdit')">
+        <i class="fas fa-edit"></i>
+    </button>
+    
+    <button class="btn-delete" onclick="confirmDelete('${obat.name}')">
+        <i class="fas fa-trash"></i>
+    </button>
+</td>
   `,
     )
     .join("");
@@ -71,3 +80,9 @@ function tampilkanTabel(data) {
 
 // 5. Jalankan loadData saat halaman terbuka
 loadData();
+
+// sort a-z
+function sortAZ() {
+  obatGlobal.sort((a, b) => a.name.localeCompare(b.name));
+  tampilkanTabel(obatGlobal);
+}

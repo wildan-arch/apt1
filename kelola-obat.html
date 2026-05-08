@@ -58,22 +58,24 @@
             <tr>
               <th>ID</th>
               <th>Nama Obat</th>
-
+              <th>Kategori</th>
+              <th>Indikasi</th>
               <th>Stok</th>
               <th>Harga</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody id="isiTabelObat"></tbody>
         </table>
       </div>
     </main>
-
+    <!-- MODAL TAMBAH OBAT -->
     <div id="modalObat" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('modalObat')">&times;</span>
         <h3>Formulir Data Obat</h3>
         <hr />
-        <form id="formObat">
+        <form id="formObat" class="form-obat">
           <div class="form-group">
             <label>Nama Obat</label>
             <input type="text" required />
@@ -86,6 +88,10 @@
                 <option>Obat Keras</option>
                 <option>Vitamin</option>
               </select>
+            </div>
+            <div class="form-group">
+              <label>Indikasi</label>
+              <input type="text" required />
             </div>
             <div class="form-group">
               <label>Stok</label>
