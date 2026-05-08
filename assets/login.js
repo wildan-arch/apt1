@@ -1,7 +1,7 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const user = document.getElementById("username").value;
+  const user = document.getElementById("username").value.trim();
   const pass = document.getElementById("password").value;
 
   // Simulasi akun admin sederhana
@@ -14,5 +14,9 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     window.location.href = "dashboard.html";
   } else {
     alert("Username atau Password salah! Silakan coba lagi.");
+    // reset form
+    document.getElementById("loginForm").reset();
+    // focus kembali ke input username
+    document.getElementById("username").focus();
   }
 });

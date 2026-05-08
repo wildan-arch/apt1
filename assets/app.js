@@ -65,45 +65,124 @@ function reveal() {
 }
 
 // logika fitur pencarian obat di index.html
-var obat = [
-  { id: 1, name: "Paracetamol", stok: 120, harga: "Rp 5.000" },
-  { id: 2, name: "Aspirin", stok: 50, harga: "Rp 10.000" },
-  { id: 3, name: "Ibuprofen", stok: 30, harga: "Rp 15.000" },
-];
+// let obat = [
+//   { id: 1, name: "Paracetamol", stok: 122, harga: "Rp 5.000" },
+//   { id: 2, name: "Aspirin", stok: 50, harga: "Rp 10.000" },
+//   { id: 3, name: "Ibuprofen", stok: 30, harga: "Rp 15.000" },
+// ];
 
+//   // 1. Filter data berdasarkan nama
+// const hasil = obat.filter((item) => item.name.toLowerCase().includes(keyword));
+
+//   // 2. Map data ke dalam HTML
+//   const htmlHasil = hasil
+//     .map(
+//       (item) => `
+//         <div class="search-item">
+//             <div class="info">
+//                 <strong>${item.name}</strong>
+//                 <span>Stok: ${item.stok} | ${item.harga}</span>
+//             </div>
+//             <button class="btn-pilih" onclick="pilihObat('${item.name}')">Pilih</button>
+//         </div>
+//     `,
+//     )
+//     .join("");
+
+//   // 3. Tampilkan ke container
+//   container.innerHTML = htmlHasil;
+// }
+
+// function pilihObat(nama) {
+//   alert("Anda memilih: " + nama);
+//   document.getElementById("hasilPencarian").innerHTML = "";
+// }
+// ambildataObat();
+
+// ambil obat dari file json
+let obatGlobal = [];
+async function loadData() {
+  try {
+    const respone = await fetch("obat.json");
+    let data = await respone.json();
+    obatGlobal = data;
+    // menampilkan semua data dengan looping
+    console.log("Data Berhasil Dimuat");
+  } catch (error) {
+    console.log("Data Gagal Dimuat");
+  }
+}
+
+// logika fitur pencarian obat di index.html dengan data yang diambil dr json
 function cariObat() {
   const keyword = document.getElementById("searchInput").value.toLowerCase();
   const container = document.getElementById("hasilPencarian");
 
-  // Jika input kosong, bersihkan hasil dan berhenti
+  //   // Jika input kosong, bersihkan hasil dan berhenti
   if (keyword === "") {
     container.innerHTML = "";
     return;
   }
+  // Kita filter dari variabel global, bukan dari fetch lagi
+  const hasil = obatGlobal.filter((obat) => obat.name.toLowerCase().includes(keyword));
 
-  // 1. Filter data berdasarkan nama
-  const hasil = obat.filter((item) => item.name.toLowerCase().includes(keyword));
+  tampilkanHasil(hasil);
+}
+// tampilakn ke layar
+// Pastikan fungsi ini ada!
+function tampilkanHasil(hasil) {
+  const container = document.getElementById("hasilPencarian");
 
-  // 2. Map data ke dalam HTML
+  // Jika tidak ada hasil
+  if (hasil.length === 0) {
+    container.innerHTML = "<p class='no-result'>Obat tidak ditemukan.</p>";
+    return;
+  }
+
+  // 1. Map data ke dalam HTML (Mengubah array objek menjadi array string HTML)
   const htmlHasil = hasil
     .map(
       (item) => `
-        <div class="search-item">
-            <div class="info">
-                <strong>${item.name}</strong>
-                <span>Stok: ${item.stok} | ${item.harga}</span>
-            </div>
-            <button class="btn-pilih" onclick="pilihObat('${item.name}')">Pilih</button>
+    <div class="search-item">
+        <div class="info">
+            <strong>${item.name}</strong>
+            <p>Stok: ${item.stok || 0} | Rp${item.harga || 0}</p>
         </div>
-    `,
+        <button class="btn-pilih" onclick="pilihObat('${item.name}')">Pilih</button>
+    </div>
+  `,
     )
-    .join("");
+    .join(""); // Menggabungkan semua string menjadi satu tanpa koma
 
-  // 3. Tampilkan ke container
+  // 2. Masukkan string HTML ke dalam container sekaligus
   container.innerHTML = htmlHasil;
 }
 
+// Fungsi saat tombol "Pilih" diklik
 function pilihObat(nama) {
-  alert("Anda memilih: " + nama);
+  alert("Anda memilih obat: " + nama);
+
+  // Opsional: Isi input pencarian dengan nama yang dipilih
+  document.getElementById("searchInput").value = nama;
+
+  // Bersihkan hasil pencarian setelah memilih
   document.getElementById("hasilPencarian").innerHTML = "";
 }
+
+// Panggil loadData saat script pertama kali dijalankan
+loadData();
+
+// tampilkan data obat
+// async function tampilkanKeLayar() {
+//   const response = await fetch("obat.json");
+//   const data = await response.json();
+//   const list = document.getElementById("daftar-obat");
+
+//   data.forEach((obat) => {
+//     const li = document.createElement("li");
+//     li.textContent = `${obat.id} : ${obat.name}, ${obat.stok}, ${obat.harga}`;
+//     list.appendChild(li);
+//   });
+// }
+
+// tampilkanKeLayar();
