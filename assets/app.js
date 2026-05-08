@@ -171,18 +171,3 @@ function pilihObat(nama) {
 
 // Panggil loadData saat script pertama kali dijalankan
 loadData();
-
-// tampilkan data obat
-// async function tampilkanKeLayar() {
-//   const response = await fetch("obat.json");
-//   const data = await response.json();
-//   const list = document.getElementById("daftar-obat");
-
-//   data.forEach((obat) => {
-//     const li = document.createElement("li");
-//     li.textContent = `${obat.id} : ${obat.name}, ${obat.stok}, ${obat.harga}`;
-//     list.appendChild(li);
-//   });
-// }
-
-// tampilkanKeLayar();

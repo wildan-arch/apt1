@@ -1,10 +1,11 @@
 [
-  { "id": 1, "name": "Paracetamol 500mg", "stok": 122, "harga": "Rp 5.000" },
-  { "id": 2, "name": "Aspirin", "stok": 50, "harga": "Rp 10.000" },
-  { "id": 3, "name": "Ibuprofen 400mg", "stok": 30, "harga": "Rp 15.000" },
-  { "id": 4, "name": "Amoxicillin 500mg ERRITA", "stok": 40, "harga": "Rp 6.000" },
-  { "id": 5, "name": "Mefenamic Acid", "stok": 50, "harga": "Rp 4.000" },
-  { "id": 6, "name": "Ampicillin 500mg", "stok": 60, "harga": "Rp 7.000" },
-  { "id": 7, "name": "Vadrol 4mg", "stok": 20, "harga": "Rp 8.000" },
-  { "id": 8, "name": "Flasicox 15mg", "stok": 30, "harga": "Rp 12.000" }
+  { "id": 1, "name": "Paracetamol 500mg", "stok": 122, "harga": 5000 },
+  { "id": 2, "name": "Aspirin", "stok": 50, "harga": 10000 },
+  { "id": 3, "name": "Ibuprofen 400mg", "stok": 30, "harga": 15000 },
+  { "id": 4, "name": "Amoxicillin 500mg ERRITA", "stok": 40, "harga": 6000 },
+  { "id": 5, "name": "Mefenamic Acid", "stok": 50, "harga": 4000 },
+  { "id": 6, "name": "Ampicillin 500mg", "stok": 60, "harga": 7000 },
+  { "id": 7, "name": "Vadrol 4mg", "stok": 20, "harga": 8000 },
+  { "id": 8, "name": "Flasicox 15mg", "stok": 30, "harga": 12000 },
+  { "id": 9, "name": "Rhemafar", "stok": 30, "harga": 6000 }
 ]

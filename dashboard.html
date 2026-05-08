@@ -15,7 +15,7 @@
       </div>
       <ul class="sidebar-menu">
         <li class="active">
-          <a href="#"><i class="fas fa-home"></i> Beranda</a>
+          <a href="#dashboard.html"><i class="fas fa-home"></i> Beranda</a>
         </li>
         <li>
           <a href="kelola-obat.html" id="menu-produk"><i class="fas fa-pills"></i> Kelola Produk</a>
@@ -27,7 +27,7 @@
           <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
         </li>
         <li class="logout">
-          <a href="index.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+          <a href="login.html" onclick="return confirm('Anda Yakin Mau Keluar');"><i class="fas fa-sign-out-alt"></i> Keluar</a>
         </li>
       </ul>
     </aside>
@@ -44,7 +44,7 @@
         <div class="stat-card">
           <i class="fas fa-box"></i>
           <div>
-            <h3>120</h3>
+            <h3 id="totalProduk">0</h3>
             <p>Total Produk</p>
           </div>
         </div>
@@ -139,11 +139,6 @@
         form.style.display = form.style.display === "none" ? "block" : "none";
       }
     </script>
-    <script>
-      if (document.referrer.indexOf("login.html") === -1) {
-        // Jika orang masuk tanpa lewat login.html, tendang balik ke login
-        window.location.href = "login.html";
-      }
-    </script>
+    <script src="assets/admin.js"></script>
   </body>
 </html>
